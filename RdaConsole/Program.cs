@@ -20,7 +20,7 @@ namespace RdaConsoleTool
 
                     creator.AddToRDAStructure(repack.Files);
 
-                    creator.SaveTo("fuck.a7m");
+                    creator.SaveTo(repack.OutputFilename);
 
                     return 0;
                 },

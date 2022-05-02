@@ -2,7 +2,7 @@
   "profiles": {
     "RdaConsoleTool": {
       "commandName": "Project",
-      "commandLineArgs": "rdapack -f fuck.txt shitfuckery.txt yoink -v 2 "
+      "commandLineArgs": "rdapack -f fuck.txt shitfuckery.txt yoink -v 2 -o fuck.a7m"
     }
   }
 }
