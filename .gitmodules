@@ -1,0 +1,10 @@
+[submodule "RdaConsole/lib/RDAExplorer"]
+	path = RdaConsole/lib/RDAExplorer
+	url = https://github.com/lysannschlegel/RDAExplorer.git
+
+[submodule "RdaConsole/lib/lib/AnnoRDA"]
+	path = RdaConsole/lib/RDAExplorer
+	url = https://github.com/lysannschlegel/AnnoRDA.git
+[submodule "RDAExplorer"]
+	path = RDAExplorer
+	url = https://github.com/lysannschlegel/RDAExplorer

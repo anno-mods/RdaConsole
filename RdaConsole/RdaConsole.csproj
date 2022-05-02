@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,15 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="lib\**" />
+    <EmbeddedResource Remove="lib\**" />
+    <None Remove="lib\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\RDAExplorer\RDAExplorer.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="lib\" />
+    <ProjectReference Include="..\RDAExplorer\src\RDAExplorer\RDAExplorer.csproj" />
   </ItemGroup>
 
 </Project>

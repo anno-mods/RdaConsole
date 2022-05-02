@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RdaConsole", ".\RdaConsole\RdaConsole.csproj", "{F70B2726-9428-48E0-B5EC-615AA2E428E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RdaConsole", "RdaConsole\RdaConsole.csproj", "{F70B2726-9428-48E0-B5EC-615AA2E428E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RdaExplorer", "RdaExplorer", "{5E3650FA-4071-499F-AA6E-9F0504022D4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDAExplorer", "RDAExplorer\src\RDAExplorer\RDAExplorer.csproj", "{F06F4391-E2ED-4C09-B671-D00871CC5F1D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AnnoModificationManager", "AnnoModificationManager", "{49A2CB83-2459-4EA4-A175-6620D6254669}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnnoModificationManager4", "RDAExplorer\src\AnnoModificationManager4\AnnoModificationManager4.csproj", "{579D60F0-65BD-4577-B3D2-A9C80B7D9BAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +23,21 @@ Global
 		{F70B2726-9428-48E0-B5EC-615AA2E428E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F70B2726-9428-48E0-B5EC-615AA2E428E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F70B2726-9428-48E0-B5EC-615AA2E428E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F06F4391-E2ED-4C09-B671-D00871CC5F1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F06F4391-E2ED-4C09-B671-D00871CC5F1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F06F4391-E2ED-4C09-B671-D00871CC5F1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F06F4391-E2ED-4C09-B671-D00871CC5F1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{579D60F0-65BD-4577-B3D2-A9C80B7D9BAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{579D60F0-65BD-4577-B3D2-A9C80B7D9BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{579D60F0-65BD-4577-B3D2-A9C80B7D9BAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{579D60F0-65BD-4577-B3D2-A9C80B7D9BAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F06F4391-E2ED-4C09-B671-D00871CC5F1D} = {5E3650FA-4071-499F-AA6E-9F0504022D4C}
+		{579D60F0-65BD-4577-B3D2-A9C80B7D9BAA} = {49A2CB83-2459-4EA4-A175-6620D6254669}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCE88544-18EE-41CC-BE1B-58950D47A3C8}
