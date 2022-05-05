@@ -21,7 +21,7 @@ namespace RdaConsoleTool
                     creator = new RdaCreator(options);
 
                     creator.AddToRDAStructure(repack.Files);
-                    creator.SaveTo(repack.OutputFilename);
+                    creator.SaveTo(repack.OutputFilename, overwrite: repack.Overwrite);
 
                     return 0;
                 },

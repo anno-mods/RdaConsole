@@ -21,7 +21,10 @@ namespace RdaConsoleTool
         [Option('r', "recursive", Required = false, HelpText = "Set to false if you do not want to search directories for files recursivly.")]
         public bool RecursiveFolderSearch { get; set; }
 
-        [Option('o', "outputfile", Required = true, HelpText = "File name of the output file.")]
-        public String OutputFilename { get; set; }
+        [Option('o', "outputfile", Required = false, HelpText = "File name of the output file.")]
+        public String OutputFilename { get; set; } = "output.rda";
+
+        [Option('y', "overwrite", Required = false, HelpText = "Forces overwriting on the output file")]
+        public bool Overwrite { get; set; } = false;
     }
 }

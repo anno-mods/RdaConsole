@@ -39,8 +39,12 @@ namespace RdaConsoleTool
             }
         }
 
-        public void SaveTo(string ExportFilename, bool compress = false)
+        public void SaveTo(string ExportFilename, bool compress = false, bool overwrite = false)
         {
+            if (File.Exists(ExportFilename) && !overwrite) {
+                Console.WriteLine($"Unable to save File {ExportFilename} because it already exists");
+                return;
+            }
             writer.Write(ExportFilename, Options.Version, compress, new RDAReader(), null);
         }
 
