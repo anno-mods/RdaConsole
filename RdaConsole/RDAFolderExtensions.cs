@@ -9,9 +9,24 @@ namespace RdaConsoleTool
 {
     internal static class RDAFolderExtensions
     {
-        public static void AddFolder(this RDAFolder folder, RDAFolder toInject)
+        public static void AddFolderIfNotNull(this RDAFolder folder, RDAFolder? toInject)
         {
-            folder?.Folders.Add(toInject);
+            if (toInject is not null)
+            {
+                folder?.Folders.Add(toInject);
+            }
         }
+    }
+
+    internal static class RDAFileListExtensions
+    {
+        public static void AddIfNotNull(this List<RDAFile> files, RDAFile? toAdd)
+        {
+            if (toAdd is not null)
+            {
+                files.Add(toAdd!);
+            }
+        }
+
     }
 }

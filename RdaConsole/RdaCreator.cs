@@ -12,7 +12,7 @@ namespace RdaConsoleTool
     /// </summary>
     public struct RdaCreatorOptions
     {
-        public bool RecursiveFolders = true;
+        public bool RecursiveFolders = false;
         public string RootFilepath = "";
         public FileHeader.Version Version;
     }
@@ -55,33 +55,30 @@ namespace RdaConsoleTool
             if (File.Exists(Entry))
             {
                 RDAFile? file = CreateRDAFile(Entry, Options.RootFilepath);
-                if (file is not null)
-                    files.Add(file);
+                files.AddIfNotNull(file);
             }
             else if (Directory.Exists(Entry))
             {
-                RDAFolder? folder = CreateRDAFolder(Entry, Entry, Path.Combine(Options.RootFilepath, Entry), root);
-                if (folder is not null)
-                    root.AddFolder(folder);
+                RDAFolder? folder = CreateRDAFolder(Path.Combine(Options.RootFilepath, Entry), root);
+                root.AddFolderIfNotNull(folder);
             }
             root.AddFiles(files);
         }
 
-        public RDAFolder? CreateRDAFolder(string FolderPath, string FolderName, string FolderFullPath, RDAFolder parent)
+        public RDAFolder? CreateRDAFolder(string FolderPath, RDAFolder parent)
         {
             RDAFolder folder = new RDAFolder(Options.Version);
 
-            folder.Name = FolderName;
-            folder.FullPath = FolderFullPath;
+            folder.Name = FolderPath;
+            folder.FullPath = FolderPath;
             folder.Parent = parent;
 
             if (Options.RecursiveFolders)
             {
                 foreach (var dir in Directory.EnumerateDirectories(FolderPath))
                 {
-                    RDAFolder? subfolder = CreateRDAFolder(dir, dir, Path.Combine(folder.FullPath, dir), folder);
-                    if (subfolder is not null)
-                        folder.AddFolder(subfolder);
+                    RDAFolder? subfolder = CreateRDAFolder(dir, folder);
+                    folder.AddFolderIfNotNull(subfolder);
                 }
             }
 
@@ -89,8 +86,7 @@ namespace RdaConsoleTool
             foreach (var file in Directory.GetFiles(FolderPath))
             {
                 RDAFile? _rda = CreateRDAFile(file, folder.FullPath);
-                if (_rda is not null)
-                    files.Add(_rda);
+                files.AddIfNotNull(_rda);
             }
             folder.AddFiles(files);
 
