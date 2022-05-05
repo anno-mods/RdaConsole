@@ -16,3 +16,5 @@ RdaConsole.exe [-v number] [-f multiple filenames] [-y] [-o output_filename] [-r
 - -v chooses a version: 1 for RDA 2.0, 2 for RDA 2.2
 - -r will include subdirectories of directories.
 - you can specify multiple filenames after -f
+
+sample usage: https://gist.github.com/taubenangriff/28e93ead630678ce0314e5a6cdbed209
