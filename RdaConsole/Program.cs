@@ -14,12 +14,13 @@ namespace RdaConsoleTool
             Parser.Default.ParseArguments<RepackOptions>(args).MapResult(
                 (repack) =>
                 {
-                    creator = new RdaCreator(VersionFromInt(repack.Version));
+                    RdaCreatorOptions options = new RdaCreatorOptions();
+                    options.Version = VersionFromInt(repack.Version);
+                    options.RecursiveFolders = repack.RecursiveFolderSearch;
 
-                    creator.RecursiveFolders = repack.RecursiveFolderSearch;
+                    creator = new RdaCreator(options);
 
                     creator.AddToRDAStructure(repack.Files);
-
                     creator.SaveTo(repack.OutputFilename);
 
                     return 0;
