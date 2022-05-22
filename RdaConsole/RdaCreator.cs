@@ -10,7 +10,7 @@ namespace RdaConsoleTool
     /// <summary>
     /// All unsafe untested. Lets see how this might break, kekw 
     /// </summary>
-    public struct RdaCreatorOptions
+    public struct RdaCreatorOptions 
     {
         public bool RecursiveFolders = false;
         public string RootFilepath = "";
