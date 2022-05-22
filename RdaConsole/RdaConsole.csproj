@@ -5,6 +5,9 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <FileVersion>1.1.0</FileVersion>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,9 +20,6 @@
     </Reference>
     <Reference Include="RDAExplorer">
       <HintPath>lib\RDAExplorer.dll</HintPath>
-    </Reference>
-    <Reference Include="zlib">
-      <HintPath>lib\zlib.dll</HintPath>
     </Reference>
   </ItemGroup>
 
