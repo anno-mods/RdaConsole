@@ -53,17 +53,22 @@ namespace RdaConsoleTool
         {
             List<RDAFile> files = new();
 
+            bool any = false;
+
             if (File.Exists(Entry))
             {
+                any = true;
                 RDAFile? file = CreateRDAFile(Entry, Options.RootFilepath);
                 files.AddIfNotNull(file);
             }
             else if (Directory.Exists(Entry))
             {
+                any = true;
                 RDAFolder? folder = CreateRDAFolder(Path.Combine(Options.RootFilepath, Entry), root);
                 root.AddFolderIfNotNull(folder);
             }
-            root.AddFiles(files);
+
+            if(any) root.AddFiles(files);
         }
 
         public RDAFolder? CreateRDAFolder(string FolderPath, RDAFolder parent)
