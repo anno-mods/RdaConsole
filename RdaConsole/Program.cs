@@ -5,7 +5,7 @@ using RDAExplorer;
 
 namespace RdaConsoleTool
 {
-    public class RdaTool  
+    public class RdaTool   
     {
         public static void Main(string[] args)
         {
