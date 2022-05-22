@@ -30,7 +30,7 @@ jobs:
       
     - name: Package
       run: |
-        tar -caf --exclude='*.pdb' RdaConsole.zip build
+        tar --exclude='*.pdb' -caf RdaConsole.zip build
     
     - name: Upload RdaConsole
       uses: actions/upload-artifact@v2.2.4
