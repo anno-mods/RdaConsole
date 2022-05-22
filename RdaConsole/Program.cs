@@ -11,8 +11,8 @@ namespace RdaConsoleTool
         {
             RdaCreator creator;
 
-            Parser.Default.ParseArguments<RepackOptions>(args).MapResult(
-                (repack) =>
+            Parser.Default.ParseArguments<RepackOptions, ExtractOptions>(args).MapResult(
+                (RepackOptions repack) =>
                 {
                     RdaCreatorOptions options = new RdaCreatorOptions();
                     options.Version = VersionFromInt(repack.Version);
@@ -23,6 +23,15 @@ namespace RdaConsoleTool
                     creator.AddToRDAStructure(repack.Files);
                     creator.SaveTo(repack.OutputFilename, overwrite: repack.Overwrite);
 
+                    return 0;
+                },
+                (ExtractOptions extract) =>
+                {
+                    RdaUnpacker unpacker = new RdaUnpacker();
+                    foreach (String file in extract.Files)
+                    {
+                        unpacker.UnpackFile(file, extract.OutputFolderName, extract.Overwrite);
+                    }
                     return 0;
                 },
                 e => 1

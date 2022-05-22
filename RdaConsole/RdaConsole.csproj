@@ -18,6 +18,9 @@
     <Reference Include="RDAExplorer">
       <HintPath>lib\RDAExplorer.dll</HintPath>
     </Reference>
+    <Reference Include="zlib">
+      <HintPath>lib\zlib.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
