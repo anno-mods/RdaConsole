@@ -8,17 +8,25 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="lib\**" />
-    <EmbeddedResource Remove="lib\**" />
-    <None Remove="lib\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RDAExplorer\src\RDAExplorer\RDAExplorer.csproj" />
+    <Reference Include="AnnoModificationManager4">
+      <HintPath>lib\AnnoModificationManager4.dll</HintPath>
+    </Reference>
+    <Reference Include="RDAExplorer">
+      <HintPath>lib\RDAExplorer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="lib\AnnoModificationManager4.dll">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\RDAExplorer.dll">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
