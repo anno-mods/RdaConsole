@@ -9,7 +9,7 @@ namespace RdaConsoleTool
     {
         public static void Main(string[] args)
         {
-            RdaCreator creator;
+            RdaCreator creator; 
 
             Parser.Default.ParseArguments<RepackOptions, ExtractOptions>(args).MapResult(
                 (RepackOptions repack) =>
