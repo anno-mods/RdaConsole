@@ -18,6 +18,8 @@ namespace RdaConsoleTool
         }
     }
 
+    //dummy 
+
     internal static class RDAFileListExtensions
     {
         public static void AddIfNotNull(this List<RDAFile> files, RDAFile? toAdd)
