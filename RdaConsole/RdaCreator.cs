@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace RdaConsoleTool
 {
     /// <summary>
-    /// All unsafe untested. Lets see how this might break, kekw
+    /// All unsafe untested. Lets see how this might break, kekw 
     /// </summary>
     public struct RdaCreatorOptions
     {
