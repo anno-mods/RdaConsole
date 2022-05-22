@@ -1,0 +1,40 @@
+name: Test master branch
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: checkout base repo
+      uses: actions/checkout@v2
+    
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build RdaConsole.sln --no-restore
+    
+    - name: Publish Windows
+      run: dotnet publish RdaConsole.sln -c Release -o build --self-contained -r win-x86 -p:PublishTrimmed=true -p:PublishSingleFile=true
+      
+    - name: Package
+      run: |
+        tar -caf RdaConsole.zip build --exclude='*.pdb'
+    
+    - name: Upload RdaConsole
+      uses: actions/upload-artifact@v2.2.4
+      with:
+    # Artifact name
+        name: RdaConsole
+        path: RdaConsole.zip
