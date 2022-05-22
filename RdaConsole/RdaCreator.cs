@@ -15,6 +15,8 @@ namespace RdaConsoleTool
         public bool RecursiveFolders = false;
         public string RootFilepath = "";
         public FileHeader.Version Version = FileHeader.Version.Version_2_2;
+
+        public RdaCreatorOptions() { }
     }
 
     internal class RdaCreator
