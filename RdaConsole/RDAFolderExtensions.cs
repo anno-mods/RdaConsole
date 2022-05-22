@@ -11,6 +11,18 @@ namespace RdaConsoleTool
                 folder?.Folders.Add(toInject);
             }
         }
+
+        public static bool IsEmpty(this RDAFolder folder)
+        {
+            try
+            {
+                return !(folder.Files.Any() && folder.Folders.Any());
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
     }
 
     //dummy 

@@ -38,10 +38,18 @@ namespace RdaConsoleTool
 
         public void SaveTo(string ExportFilename, bool compress = false, bool overwrite = false)
         {
-            if (File.Exists(ExportFilename) && !overwrite) {
+            if (File.Exists(ExportFilename) && !overwrite) 
+            {
                 Console.WriteLine($"Unable to save File {ExportFilename} because it already exists");
                 return;
             }
+
+            if (writer.Folder.IsEmpty())
+            {
+                Console.WriteLine("Unable to save a File without any elements");
+                return;
+            }
+
             writer.Write(ExportFilename, Options.Version, compress, new RDAReader(), null);
         }
 
@@ -53,22 +61,22 @@ namespace RdaConsoleTool
         {
             List<RDAFile> files = new();
 
-            bool any = false;
-
             if (File.Exists(Entry))
             {
-                any = true;
                 RDAFile? file = CreateRDAFile(Entry, Options.RootFilepath);
                 files.AddIfNotNull(file);
             }
             else if (Directory.Exists(Entry))
             {
-                any = true;
                 RDAFolder? folder = CreateRDAFolder(Path.Combine(Options.RootFilepath, Entry), root);
                 root.AddFolderIfNotNull(folder);
             }
+            else
+            {
+                Console.WriteLine($"Entry {Entry} not found. The element is skipped");
+            }
 
-            if(any) root.AddFiles(files);
+            if(files.Count > 0) root.AddFiles(files);
         }
 
         public RDAFolder? CreateRDAFolder(string FolderPath, RDAFolder parent)
