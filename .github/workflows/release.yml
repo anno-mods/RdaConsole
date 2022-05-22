@@ -32,11 +32,11 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
             # Artifact name
-          workflow: main.yml
+          workflow: push.yml
           workflow_conclusion: success
           
-      - name: Upload FileDBReader
-        id: upload_reader
+      - name: Upload RdaConsole
+        id: upload_rda
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
