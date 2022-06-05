@@ -1,7 +1,8 @@
 {
   "profiles": {
     "RdaConsoleTool": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "pack -f d -v 2 -y -n"
     }
   }
 }

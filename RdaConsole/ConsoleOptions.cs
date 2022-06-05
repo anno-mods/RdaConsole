@@ -21,6 +21,9 @@ namespace RdaConsoleTool
 
         [Option('y', "overwrite", Required = false, HelpText = "Forces overwriting on the output file")]
         public bool Overwrite { get; set; } = false;
+
+        [Option('n', "force-noout", Required = false, HelpText = "Supresses console output of the RDA explorer library")]
+        public bool ForceNoOut { get; set; } = false;
     }
 
     [Verb("extract", HelpText = "extracts an rda file to a specified location")]
@@ -34,5 +37,8 @@ namespace RdaConsoleTool
 
         [Option('y', "overwrite", Required = false, HelpText = "Forces overwriting in the output folder")]
         public bool Overwrite { get; set; } = false;
+
+        [Option('n', "force-noout", Required = false, HelpText = "Supresses console output of the RDA explorer library")]
+        public bool ForceNoOut { get; set; } = false;
     }
 }

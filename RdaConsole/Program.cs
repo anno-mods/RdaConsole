@@ -9,7 +9,7 @@ namespace RdaConsoleTool
     {
         public static void Main(string[] args)
         {
-            RdaCreator creator; 
+            RdaCreator creator;
 
             Parser.Default.ParseArguments<RepackOptions, ExtractOptions>(args).MapResult(
                 (RepackOptions repack) =>
@@ -20,6 +20,8 @@ namespace RdaConsoleTool
 
                     creator = new RdaCreator(options);
 
+                    if (repack.ForceNoOut) DisableRdaExplorerConsole();
+
                     creator.AddToRDAStructure(repack.Files);
                     creator.SaveTo(repack.OutputFilename, overwrite: repack.Overwrite);
 
@@ -28,6 +30,9 @@ namespace RdaConsoleTool
                 (ExtractOptions extract) =>
                 {
                     RdaUnpacker unpacker = new RdaUnpacker();
+
+                    if (extract.ForceNoOut) DisableRdaExplorerConsole();
+
                     foreach (String file in extract.Files)
                     {
                         unpacker.UnpackFile(file, extract.OutputFolderName, extract.Overwrite);
@@ -42,6 +47,11 @@ namespace RdaConsoleTool
         {
             if (i == 1) return FileHeader.Version.Version_2_0;
             else return FileHeader.Version.Version_2_2;
+        }
+
+        private static void DisableRdaExplorerConsole()
+        {
+            UISettings.EnableConsole = false;
         }
     }
 }
