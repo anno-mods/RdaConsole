@@ -35,6 +35,9 @@ namespace RdaConsoleTool
         [Option('o', "outputfile", Required = false, HelpText = "File name of the output file.")]
         public String OutputFolderName { get; set; } = "rda_out";
 
+        [Option("filter", Required = false, HelpText = "Extracts only files which satisfy a regex.")]
+        public String Filter { get; set; } = ".*";
+
         [Option('y', "overwrite", Required = false, HelpText = "Forces overwriting in the output folder")]
         public bool Overwrite { get; set; } = false;
 
