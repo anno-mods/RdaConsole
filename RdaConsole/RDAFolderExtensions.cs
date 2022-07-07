@@ -16,7 +16,7 @@ namespace RdaConsoleTool
         {
             try
             {
-                return !(folder.Files.Any() && folder.Folders.Any());
+                return folder.Folders.Count() == 0 && folder.Files.Count() == 0;
             }
             catch (Exception e)
             {
