@@ -35,7 +35,7 @@ namespace RdaConsoleTool
 
                     foreach (String file in extract.Files)
                     {
-                        unpacker.UnpackFile(file, extract.OutputFolderName, extract.Overwrite);
+                        unpacker.UnpackFile(file, extract.OutputFolderName, extract.Filter, extract.Overwrite);
                     }
                     return 0;
                 },

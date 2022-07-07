@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace RdaConsoleTool
@@ -17,10 +18,10 @@ namespace RdaConsoleTool
             _reader = new RDAReader();
         }
 
-        public void UnpackFile(String Filename, String OutputFolderName, bool overwrite)
+        public void UnpackFile(String Filename, String OutputFolderName, String filter, bool overwrite)
         {
             SetupReader(Filename);
-            ExtractToOutput(OutputFolderName, overwrite);
+            ExtractToOutput(OutputFolderName, filter, overwrite);
         }
 
         private void SetupReader(String Filename)
@@ -29,7 +30,7 @@ namespace RdaConsoleTool
             _reader.ReadRDAFile();
         }
 
-        private void ExtractToOutput(String OutputFilename, bool overwrite)
+        private void ExtractToOutput(String OutputFilename, String filter, bool overwrite)
         {
             if (Directory.Exists(OutputFilename) && !overwrite)
             {
@@ -37,15 +38,24 @@ namespace RdaConsoleTool
                 return;
             }
             Directory.CreateDirectory(OutputFilename);
-            _reader.ExtractAllFiles(OutputFilename);
+            var files = _reader.rdaFolder.GetAllFiles();
+            var regex = new Regex(filter, RegexOptions.Compiled);
+            files.RemoveAll(f => !regex.IsMatch(f.FileName));
+            if (files.Count == 0)
+            {
+                Console.WriteLine($"Nothing left to extract, all files were filtered out");
+                return;
+            }
+
+            _reader.ExtractFiles(files, OutputFilename);
         }
     }
 
     internal static class RDAReaderExtensions
     {
-        public static void ExtractAllFiles(this RDAReader reader, String Path)
+        public static void ExtractFiles(this RDAReader reader, List<RDAFile> files, String Path)
         {
-            RDAExplorer.RDAFileExtension.ExtractAll(reader.rdaFolder.GetAllFiles(), Path);
+            RDAExplorer.RDAFileExtension.ExtractAll(files, Path);
         }
     }
 }
