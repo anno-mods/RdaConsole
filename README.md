@@ -22,9 +22,10 @@ sample usage: https://gist.github.com/taubenangriff/28e93ead630678ce0314e5a6cdbe
 Usage for extracting: 
 
 ```
-RdaConsole.exe extract [-f multiple filenames] [-y] [-o output_foldername]
+RdaConsole.exe extract [-f multiple filenames] [-y] [-o output_foldername] [--filter regex]
 ```
 
--y overwrites the output folder
--o sets the output folder name
+- y overwrites the output folder
+- o sets the output folder name
 - you can specify multiple filenames after -f
+- filter only extracts a file if its name matches the provided regex.
